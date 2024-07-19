@@ -14,10 +14,6 @@ def is_contains(string, list_to_search):
     for i in range(len(list_to_search)):
         if string.upper() == list_to_search[i].upper():
             flag = True
-        elif string.upper() == list_to_search[i].upper():
-            flag = True
-        elif string.upper() == list_to_search[i].upper():
-            flag = True
         else: flag = False
     return flag
 print(string_info('Capybara'))
