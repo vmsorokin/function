@@ -1,17 +1,19 @@
-data_structure = [[1, 2, 3]]
+data_structure = [[1, 2, 3], {'a': 4, 'b': 5}, (6, {'cube': 7, 'drum': 8}), "Hello", ((), [{(2, 'Urban', ('Urban2', 35))}])]
+                    #6          11                      29                      5           48
 
 def calculate_structure_sum(lst):
-    global  s
-    s = 0
+    s = 0 #локальная переменная
     for i in lst:
-        if type(i) == list: #списки
-            calculate_structure_sum(i)
-        elif type(i) == int: # числа
+        if isinstance(i, list): #списки
+            s += calculate_structure_sum(i)
+        elif isinstance(i, dict): #словарь
+            s += calculate_structure_sum(list(i.items()))
+        elif isinstance(i, int): # числа
             s += i
-        elif type(i) == str: # строки
+        elif isinstance(i, str): # строки
             s += len(i)
-    return print(s)
-
+        else: s += calculate_structure_sum(list(i)) #кортежи
+    return s
 
 result = calculate_structure_sum(data_structure)
 print(result)
