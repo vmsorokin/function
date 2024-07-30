@@ -12,7 +12,10 @@ def calculate_structure_sum(lst):
             s += i
         elif isinstance(i, str): # строки
             s += len(i)
-        else: s += calculate_structure_sum(list(i)) #кортежи
+        elif isinstance(i, set): #множества
+            s += calculate_structure_sum(list(i))
+        elif isinstance(i, tuple): #кортежи
+            s += calculate_structure_sum(list(i))
     return s
 
 result = calculate_structure_sum(data_structure)
